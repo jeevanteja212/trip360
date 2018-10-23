@@ -1,0 +1,54 @@
+.cust-autofill >div
+{
+ 
+    padding-left: 0px;
+    position: absolute;
+    z-index: 9;
+}
+.cust-autofill ul
+{
+      list-style-type: none;
+      background-color: #fff;
+     border: 1px solid #007bff;
+      color:#000;
+      padding-right: 0px;
+    padding-left: 0px;
+        border-radius: 5px;
+        margin-top: 1px;
+            margin-left: 2px;
+            max-height: 200px;
+            overflow-y: scroll;
+           
+}
+
+.cust-autofill ul li
+{
+    padding-bottom: 5px;
+    cursor:pointer;
+     padding:10px
+}
+.cust-autofill ul li:hover
+{
+  background-color:  #007bff;
+  color: #fff;
+}
+.cust-autofill input
+{
+  height: 35px;
+      border-radius: 5px;
+}
+
+.cust-autofill .row
+{
+  margin: 0px !important;
+}
+.cust-autofill i{
+        margin: 5px 5px 0px 0px;
+}
+   .padding-left-0
+{
+  padding-left:0px;
+}
+.cust-autofill-input-unique{
+  padding-left: 10px;
+}

@@ -1,0 +1,72 @@
+
+ <img src="assets/images/loaderflight.gif" style="margin-top:15%; margin-left:43%"  *ngIf="searchOutput.length==0"   class="user-avatar" />
+<div class="header-result" *ngIf="searchOutput.length>0">
+    <button type="button" class="btn btn-default pull-left" (click)="gotoSearchClick()"> <i class="fa fa-backward" ></i>&nbsp;&nbsp;Back</button>
+    <button type="button"  (click)="gotoRoundTrip()" *ngIf="searchOutput&&bookRoundTrip&&searchOutput.length==2 && bookRoundTrip.length==2"  class="btn btn-warning pull-right margin-right-20">Book&nbsp;&nbsp;<i class="fa fa-forward" ></i></button>
+</div>
+
+
+<div class="row card-cust" *ngIf="searchOutput.length>0">
+    <div class="pull-left" [ngClass]="{'col-sm-12':searchOutput.length==1,'col-sm-6':searchOutput.length==2}" *ngFor="let output of searchOutput;let searchOutputIndex=index">
+
+        <div class="card_book" [ngClass]="{'flight-selected':searchOutput.length==2 && (bookRoundTrip[searchOutputIndex] && 
+                          res.ResultIndex===bookRoundTrip[searchOutputIndex].ResultIndex)}" *ngFor="let res of output">
+            <div class="row" [ngClass]="{'inner-flights-seperation':!segmentFirst}" *ngFor="let segment of res.Segments;let segmentFirst=first;">
+                <div class="div-img">
+                    <div><img src="https://s3-us-west-2.amazonaws.com/paytm-travel/travel_db/flights/airlines+logo/SG.png" role="presentation"></div>
+                </div>
+
+                <div [ngClass]="{'flight-name':searchOutput.length==1,'flight-name-trip':searchOutput.length==2}">
+                    <div class="flight-name-key ">{{segment[0].Airline.AirlineName}}</div>
+                    <div class="flight-name-value">
+                        {{segment[0].Airline.AirlineCode}} - {{segment[0].Airline.FlightNumber}}
+
+                    </div>
+                </div>
+                <div class="start-time text-align-center">
+                    <div class="timing">{{segment[0].Origin.DepTime | date:'dd/MM/yyyy'}}</div>
+                    <div class="timing">{{segment[0].Origin.DepTime | date:'HH:mm'}}</div>
+                    <div class="place"> {{segment[0].Origin.Airport.AirportCode}}</div>
+                </div>
+                <div class="duration text-align-center" *ngIf="searchOutput.length==1">
+                    <div class="opacity-1 duration-1">{{convertDurationHRS(segment[0].Duration)}}</div>
+                    <div class="duration-icon"><img src="https://paytm.com/travel/images/flights/srp_arrow.svg" role="presentation"></div>
+                    <div class="duration-1">Non Stop</div>
+                </div>
+                <div class="start-time text-align-center" *ngIf="searchOutput.length!==1">
+                    <div class="timing">{{segment[0].Duration}}</div>
+                    <div class="place">Non Stop</div>
+                </div>
+                <div class="arrival-1 text-align-center">
+                    <div class="timing">{{segment[0].Destination.ArrTime | date:'dd/MM/yyyy'}}</div>
+                    <div class="timing">{{segment[0].Destination.ArrTime | date:'HH:mm'}}</div>
+                    <div class="place"> {{segment[0].Destination.Airport.AirportCode}}</div>
+                </div>
+
+                <div class="price-1 text-align-center" *ngIf="segmentFirst">
+                    <div class="price-amount">
+                        <div class="display-inline-block"><img src="//drg5ie3bz46tr.cloudfront.net/travel/rtravel/assets/c73cc5fb.svg" role="presentation"></div>
+                        {{res.Fare.PublishedFare}}
+
+                    </div>
+                    <div class="place">{{res.IsRefundable && 'Refundable' || 'Non-Refundable'}}</div>
+                </div>
+                <div class="price-1 text-align-center" *ngIf="segmentFirst">
+                    <div>
+                        <button *ngIf="searchOutput.length==1" class="btn btn-primary" (click)="book(res)">Book &nbsp;&nbsp;<i class="fa fa-forward"  ></i></button>
+                        <button *ngIf="searchOutput.length==2 && !(bookRoundTrip[searchOutputIndex] && 
+                          res.ResultIndex===bookRoundTrip[searchOutputIndex].ResultIndex)" class="btn btn-primary" (click)="bookpush(res,searchOutputIndex)">
+                                Select
+                         </button>
+                        <button *ngIf="searchOutput.length==2 && (bookRoundTrip[searchOutputIndex] && 
+                          res.ResultIndex===bookRoundTrip[searchOutputIndex].ResultIndex)" class="btn btn-success" (click)="bookpush(res,searchOutputIndex)">
+                            <i  class="fa fa-check-circle-o"></i>
+                                Selected
+                         </button>
+                    </div>
+                    <a>Flight Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

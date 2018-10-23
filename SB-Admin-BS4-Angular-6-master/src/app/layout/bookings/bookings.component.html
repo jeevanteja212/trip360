@@ -1,0 +1,70 @@
+<div class="col-md-12">
+    <div class="card margin-top-10" *ngFor="let book of bookings">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    Booking ID : <b>{{book.BookingId}}</b>
+                </div>
+                <div class="col-md-4">
+                    Issued By : <b>{{book.issuedBy}}</b>
+                </div>
+                <div class="col-md-4">
+                    Issued On : <b>{{book.issuedOn}}</b>
+                </div>
+            </div>
+            <div class="row margin-top-10">
+                <div class="col-md-4">
+                    Airline PNR : <b>{{book.airlinePNR}}</b>
+                </div>
+                <div class="col-md-4">
+                    Status : <b>{{book.ticketStatus}}</b>
+                </div>
+                <div class="col-md-4">
+                    Amount : <b>{{book.grossFare}}</b>
+                </div>
+
+            </div>
+
+            <div class="row margin-top-10">
+                <div class="col-md-6">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>Origin</th>
+                                <th>Destination</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let flight of book.flightsRes">
+                                <td>{{flight.origin}}</td>
+                                <td>{{flight.destination}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Ticket Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let passenger of book.passengersRes">
+                                <td>{{passenger.title}} {{passenger.firstname}} {{passenger.lastname}} </td>
+                                <td>{{passenger.ticketNumber}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-10 ">
+                    <textarea class="width-100" rows="2" placeholder="Remarks" maxlength="40" [(ngModel)]="book.notes" ></textarea>
+                </div>
+                <div class="col-md-2 ">
+                    <button type="button" [disabled]=" !book.notes" class="btn btn-warning" (click)="cancelTicket(book)"><i class="fa fa-times" aria-hidden="true"></i> Cancel Ticket</button>
+                </div>
+            </div>
+        </div>

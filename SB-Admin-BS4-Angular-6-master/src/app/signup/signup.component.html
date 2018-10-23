@@ -1,0 +1,42 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img class="user-avatar" src="assets/images/companylogo.png" width="150px" />          
+          
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg"  [(ngModel)]="first_name"  placeholder="First Name *">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" [(ngModel)]="last_name" placeholder="Last Name *">
+                    </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" [(ngModel)]="phone"  placeholder="Phone *">
+                    </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" [(ngModel)]="email" placeholder="Email *">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" [(ngModel)]="password1"  placeholder="Password *">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" [(ngModel)]="password2" placeholder="Repeat Password *">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" [(ngModel)]="city" placeholder="City *">
+                    </div>
+                    <div class="form-group">
+                        <textarea  class="form-control input-underline input-lg" cols="10" [(ngModel)]="address1" placeholder="Address *" ></textarea>
+                    </div>
+                    
+                </div>
+                <a class="btn rounded-btn" (click)="submit()"> Register </a>&nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+                      &nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/reset-password']">Reset Password</a>
+           
+        </div>
+    </div>
+</div>

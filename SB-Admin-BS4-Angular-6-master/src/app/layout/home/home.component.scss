@@ -1,0 +1,196 @@
+.lbl-from{
+  padding-left: 0px;
+}
+.card-booking
+{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.page-header 
+{
+  color:#007bff;  
+}
+
+.page-header i
+{
+  color:#f26722;
+  padding-right:5px;
+}
+.padding-left-0
+{
+  padding-left:0px;
+}
+.card {
+  border-color: #fff;
+}
+.card-header {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    background-color: #f5f6f8;
+    border-color: #f5f6f8;
+        padding: 0px;
+    height: 68px;
+    border-bottom: 1px solid #1081e1;
+}
+.nav-tabs {
+    border-bottom: none;
+    height: 100%;
+}
+
+.nav-tabs li {
+ 
+       text-align: center;
+}
+
+.nav-tabs li i {
+margin-left: 3px;
+    font-size: 24px;
+    margin-top: 10px;
+}
+.nav-tabs li a {
+font-weight: bold;
+}
+
+
+.nav-tabs .active {
+  background-color: #ef0303;   
+   
+}
+
+.nav-tabs  li a{
+  color: #a5acb9;   
+ 
+}
+.nav-tabs  li i{
+     color: #a5acb9 ;  
+ 
+}
+.nav-tabs  .active a{
+  color: #fff;   
+  
+}
+.nav-tabs  .active i{
+  color: #fff;   
+  
+}
+.width-100
+{
+width:100%;
+}
+.width-6
+{
+  width:16.6667%;
+}
+.card-body
+{
+   background-color: #1081e1;
+}
+.float-left{
+  float:left;
+}
+.float-right{
+  float:right;
+}
+.btn-search{
+background-color: #ef0303;
+    color: #fff;
+    margin-top: 15px;
+    margin-left: -12px;
+}
+.btn-search:hover{
+  background-color: #ef0303;
+    color: #fff;
+}
+.card-body-cust
+{
+      padding: 13px 13px 20px 35px;
+}
+.btn-drp{
+  background-color: #fff;
+  text-align: left;
+}
+.btn-drp::after{
+  float: right;
+  margin-top:10px;
+}
+.btn-calender{
+  background-color: #fff;
+}
+.btn-calender:hover{
+  color: #000fff !important;
+}
+.border-menu{
+      border-right: 1px solid #a1a6af;
+    
+}
+.numberinc{
+  float: left;
+    width: 100%;
+    padding: 7px;
+}
+.numberinc .minus{
+      float: left;
+      background-color: #dedede;
+    border: 1px solid #c2c2c2;
+    outline: none;
+    color: #4a4a4a;
+    padding: 0 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+}
+
+.numberinc .numeric{
+      border: 1px solid #c2c2c2;
+    border-left-width: 0;
+    border-right-width: 0;
+    outline: none;
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+    width: 30px;
+    float: left;
+    height: 25px;
+}
+.numberinc .plus{
+     float: left;
+      background-color: #dedede;
+    border: 1px solid #c2c2c2;
+    outline: none;
+    color: #4a4a4a;
+    padding: 0 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+}
+.numberinc label{
+  float: left;
+      font-size: 12px;
+    font-weight: bold;
+}
+.numberinc label>span{
+  color: #f26722;
+}
+    
+.numberinc div{
+  float: right;
+
+}
+.remove-fight{
+      font-size: 20px;
+    margin-top: 27px;
+}
+.margin-bottom-20{
+margin-bottom: 20px;
+}
+.btn-info-add {
+    color: #fff;
+    background-color: #fc9602;
+    border-color: #fc9602;
+}
+.cursor-pointer{
+  cursor: pointer;
+}

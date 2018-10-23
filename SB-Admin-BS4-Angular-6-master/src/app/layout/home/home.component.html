@@ -1,0 +1,170 @@
+<div style="min-height:550px" [@routerTransition]>
+    <div *ngIf="!showResult">
+        <div class="page-header">
+            <h1><i class="fa fa-plane" aria-hidden="true"></i>Flights</h1>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 card-booking">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs width-100">
+                            <li class="active width-6 border-menu">
+                                <i class="fa fa-plane" aria-hidden="true"></i><br>
+                                <a>Flights</a></li>
+                            <li class="width-6 border-menu"><i class="	fa fa-hotel" aria-hidden="true"></i><br><a>Hotels</a></li>
+                            <li class="width-6 border-menu"><i class="fa fa-car" aria-hidden="true"></i><br><a>Cars</a></li>
+                            <li class="width-6 border-menu"><i class="fa fa-bus" aria-hidden="true"></i><br><a>Bus</a></li>
+                            <li class="width-6 border-menu"><i class="fa fa-train" aria-hidden="true"></i><br><a>Trains</a></li>
+                            <li class="width-6 "><i class="fa fa-film" aria-hidden="true"></i><br><a>Movies</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body card-body-cust">
+                        <div class="row">
+                            <h1 class="card-title">Book Domestic & International Flight</h1>
+                            <div class="col-sm-12 padding-left-0">
+
+                                <mat-radio-group [(ngModel)]="trip" (change)="tripChange()">
+                                     <mat-radio-button [value]="1">One Way</mat-radio-button>&nbsp;
+                                    <mat-radio-button [value]="2">Round Trip</mat-radio-button>&nbsp;                                   
+                                    <mat-radio-button [value]="3">Multi City</mat-radio-button>
+                                </mat-radio-group>
+
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="trip!=3">
+                            <div class="col-sm-6 padding-left-0">
+                                <div class="form-group">
+                                    <label class="lbl-from">From</label>
+                                    <app-autofill-flight [id]="'from'" (change)="fromStateChange($event)"></app-autofill-flight>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 padding-left-0">
+                                <div class="form-group">
+                                    <label class="lbl-from">To</label>
+                                    <app-autofill-flight [id]="'to'" (change)="toStateChange($event)"></app-autofill-flight>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="trip==3">
+                            <div class="row" *ngFor="let mul of multicityTrip;let index=index;let last=last">
+                                <div class="col-sm-4 padding-left-0">
+                                    <div class="form-group">
+                                        <label class="lbl-from">From</label>
+                                        <app-autofill-flight [id]="'from'+index"  (change)="fromStateMulticastChange($event,index)"></app-autofill-flight>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 padding-left-0">
+                                    <div class="form-group">
+                                        <label class="lbl-from">To</label>
+                                        <app-autofill-flight [id]="'to'+index" (change)="toStateMulticastChange($event,index)"></app-autofill-flight>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 padding-left-0">
+                                    <label class="lbl-from">Depart</label><br>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Departure Date" name="dp" [(ngModel)]="mul.modelDept" ngbDatepicker #d="ngbDatepicker">
+                                        <button class="btn btn-outline-secondary btn-calender" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i> </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 padding-left-0">
+                                    <i *ngIf="last&&multicityTrip.length>2" class="fa fa-trash remove-fight cursor-pointer" (click)="removeAnotherFlight(index)"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="trip==3&&multicityTrip.length<6" class="margin-bottom-20">
+                            <div class="row"> 
+                                <button class="btn btn-info-add" (click)="addAnotherFlight()" > <i class="fa fa-plus"></i> Add another flight ({{multicityTrip.length}}/6)</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 padding-left-0">
+                                <div class="col-sm-6 float-left padding-left-0">
+
+                                    <label class="lbl-from">Travellers</label><br>
+                                    <div ngbDropdown class="d-inline-block width-100">
+                                        <button class="btn btn-default width-100 btn-drp" id="dropdownBasic1" ngbDropdownToggle>{{travellerCount}} Traveller(s)</button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="width-100">
+
+                                            <div class="numberinc">
+                                                <label>Adults <span>(12+ yrs)</span></label>
+                                                <div>
+                                                    <button class="minus" (click)=AudultMClick($event)>−</button>
+                                                    <input type="text" (blur)="onBlureve()" minlength="1" maxlength="1" (keypress)="restrictNumeric($event)" [(ngModel)]="audultcount"
+                                                        class="numeric" (click)=AudultNClick($event)>
+                                                    <button class="plus" (click)=AudultPClick($event)>+</button>
+                                                </div>
+                                            </div>
+                                            <div class="numberinc">
+                                                <label>Children <span>(2-12 yrs)</span></label>
+                                                <div>
+                                                    <button class="minus" (click)=ChildrenMClick($event)>−</button>
+                                                    <input type="text" (blur)="onBlureve()" minlength="1" maxlength="1" (keypress)="restrictNumeric($event)" [(ngModel)]="childrencount"
+                                                        class="numeric" (click)=ChildrenNClick($event)>
+                                                    <button class="plus" (click)=ChildrenPClick($event)>+</button>
+                                                </div>
+                                            </div>
+                                            <div class="numberinc">
+                                                <label>Infant(s) <span>(below 2 yrs)</span></label>
+                                                <div>
+                                                    <button class="minus" (click)=InfantMClick($event)>−</button>
+                                                    <input type="text" (blur)="onBlureve()" minlength="1" maxlength="1" (keypress)="restrictNumeric($event)" [(ngModel)]="infrantscount"
+                                                        class="numeric" (click)=InfantNClick($event)>
+                                                    <button class="plus" (click)=InfantPClick($event)>+</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 float-left padding-left-0">
+
+                                    <label class="lbl-from">Class</label><br>
+                                    <div ngbDropdown class="d-inline-block width-100">
+                                        <button class="btn btn-default width-100 btn-drp" id="dropdownBasic1" ngbDropdownToggle>{{journeyType}}</button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="width-100">
+                                            <button class="dropdown-item" (click)="journeyType='All';classSelect(1)">All</button>
+                                            <button class="dropdown-item" (click)="journeyType='Economy';classSelect(2)">Economy</button>
+                                            <button class="dropdown-item" (click)="journeyType='Premium Economy';classSelect(3)">Premium Economy</button>
+                                            <button class="dropdown-item" (click)="journeyType='Business';classSelect(4)">Business</button>
+                                            <button class="dropdown-item" (click)="journeyType='Premium Business';classSelect(5)">Premium Business</button>
+                                            <button class="dropdown-item" (click)="journeyType='First';classSelect(6)">First</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 padding-left-0" *ngIf="trip!==3">
+                                <div class="col-sm-6 float-left padding-left-0">
+                                    <label class="lbl-from">Depart</label><br>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Departure Date" name="dp" [(ngModel)]="modelDept" ngbDatepicker #d="ngbDatepicker">
+                                        <button class="btn btn-outline-secondary btn-calender" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i> </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 float-left padding-left-0" *ngIf="trip===2">
+                                    <label class="lbl-from">Return</label><br>
+
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Return Date" name="dp1" [(ngModel)]="modelReturn" ngbDatepicker #d1="ngbDatepicker">
+
+                                        <button class="btn btn-outline-secondary btn-calender" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button type="button" class="btn btn-info float-right btn-search" (click)="searchflight()">Go <i class="fa fa-hand-o-right"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+</div>

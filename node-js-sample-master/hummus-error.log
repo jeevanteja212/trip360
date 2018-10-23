@@ -1,0 +1,10 @@
+[ 02/09/2018 17:05:48 ] ObjectsContext::WriteXrefTable, Unexpected Failure. Object of ID = 51 was not registered as written. probably means it was not written
+[ 02/09/2018 17:05:48 ] PDFWriter::EndPDF, Could not end PDF
+[ 02/09/2018 17:11:51 ] ObjectsContext::WriteXrefTable, Unexpected Failure. Object of ID = 28 was not registered as written. probably means it was not written
+[ 02/09/2018 17:11:51 ] PDFWriter::EndPDF, Could not end PDF
+[ 02/09/2018 17:13:55 ] ObjectsContext::WriteXrefTable, Unexpected Failure. Object of ID = 28 was not registered as written. probably means it was not written
+[ 02/09/2018 17:13:55 ] PDFWriter::EndPDF, Could not end PDF
+[ 02/09/2018 17:15:08 ] ObjectsContext::WriteXrefTable, Unexpected Failure. Object of ID = 28 was not registered as written. probably means it was not written
+[ 02/09/2018 17:15:08 ] PDFWriter::EndPDF, Could not end PDF
+[ 02/09/2018 17:17:55 ] ObjectsContext::WriteXrefTable, Unexpected Failure. Object of ID = 51 was not registered as written. probably means it was not written
+[ 02/09/2018 17:17:55 ] PDFWriter::EndPDF, Could not end PDF
